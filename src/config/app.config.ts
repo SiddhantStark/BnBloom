@@ -72,12 +72,12 @@ export const FOOTER_SECTION = [
       { text: 'Genius loyalty programme', href: '#' },
       { text: 'Seasonal and holiday deals', href: '#' },
       { text: 'Travel articles', href: '#' },
-      { text: 'Booking.com for Business', href: '#' },
+      { text: 'BnBloom.com for Business', href: '#' },
       { text: 'Traveller Review Awards', href: '#' },
       { text: 'Car hire', href: '#' },
       { text: 'Flight finder', href: '#' },
       { text: 'Restaurant reservations', href: '#' },
-      { text: 'Booking.com for Travel Agents', href: '#' },
+      { text: 'BnBloom.com for Travel Agents', href: '#' },
     ],
   },
   {
@@ -102,7 +102,7 @@ export const FOOTER_SECTION = [
   {
     title: 'About',
     links: [
-      { text: 'About Booking.com', href: 'https://codingshuttle.com' },
+      { text: 'About BnBloom.com', href: 'https://siddhantcodes.vercel.app/' },
       { text: 'How we work', href: '#' },
       { text: 'Sustainability', href: '#' },
       { text: 'Press centre', href: '#' },

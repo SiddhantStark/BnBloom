@@ -22,6 +22,7 @@ function useMutation(url, method) {
         cb.onSuccess(response);
       }
     } catch (err) {
+      console.log(err);
       setMutateState((prev) => ({
         ...prev,
         error: err.message,

@@ -1,28 +1,19 @@
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import React from 'react'
-import { useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import useSignUpForm from './hooks/use-sign-up-form';
 
 const SignUp = () => {
-  const form = useForm({
-    defaultValues: {
-      username: '',
-      email: '',
-      password: ''
-    }
-  });
-
-  const onSubmit = (data) => {
-    console.log(data);  
-  }
+  
+  const {form, handleSignUpSubmit, pending} = useSignUpForm();
 
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='w-full mt-8 space-y-4'>
+        <form onSubmit={form.handleSubmit(handleSignUpSubmit)} className='w-full mt-8 space-y-4'>
 
-          <FormField control={form.control} name="username" render={({ field }) => (
+          <FormField control={form.control} name="name" render={({ field }) => (
             <FormItem>
               <FormLabel>Username</FormLabel>
               <FormControl>
@@ -52,7 +43,7 @@ const SignUp = () => {
             </FormItem>
           )} />
 
-          <Button type="submit" className='w-full h-10 mt-4' aria-label='Create a new account'>
+          <Button type="submit" className='w-full h-10 mt-4' aria-label='Create a new account' disabled={pending}>
             Create New Account
           </Button>
         </form>
@@ -67,3 +58,4 @@ const SignUp = () => {
 }
 
 export default SignUp
+

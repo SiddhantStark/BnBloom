@@ -35,7 +35,7 @@ const Footer = () => {
           <div>
             <p className="text-sm text-center text-white">
               Copyright &copy;{' '}
-              {`${dayjs().year()} Booking.com™. All rights reserved.`}
+              {`${dayjs().year()} BnBloom.com™. All rights reserved.`}
             </p>
           </div>
         </div>

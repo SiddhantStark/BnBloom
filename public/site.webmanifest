@@ -1,6 +1,6 @@
 {
   "name": ".com",
-  "short_name": "DriftBnB.com",
+  "short_name": "BnBloom.com",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
@@ -16,5 +16,5 @@
   "theme_color": "#113B95",
   "background_color": "#ffffff",
   "display": "browser",
-  "description": "Vacation Rentals, Homes, Experiences & Places - Booking.com"
+  "description": "Vacation Rentals, Homes, Experiences & Places - BnBloom.com"
 }

@@ -4,20 +4,12 @@ import { set, useForm } from 'react-hook-form'
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { useSignInForm } from './hooks/use-sign-in-form';
 
 const SignIn = () => {
-  const form = useForm({
-    defaultValues: {
-      email: '',
-      password: ''
-    }
-  });
+  const {form, handleSignInSubmit, pending} = useSignInForm();
 
   const [showPassword, setShowPassword] = useState(false);
-
-  const onSubmit = (data) => {
-    console.log(data);  
-  }
 
   const handleHidePassword = (e) => {
     e.preventDefault();
@@ -27,7 +19,7 @@ const SignIn = () => {
   return (
     <>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className='w-full mt-8 space-y-4'>
+        <form onSubmit={form.handleSubmit(handleSignInSubmit)} className='w-full mt-8 space-y-4'>
 
           <FormField control={form.control} name="email" render={({ field }) => (
             <FormItem>
@@ -45,7 +37,7 @@ const SignIn = () => {
               <FormControl>
                 <div className='flex items-center justify-between'>
                 <Input type={showPassword ? "text" : "password"} placeholder="Your Password" {...field} className='h-10 rounded flex-1'/>
-                <Button onClick={(e) => handleHidePassword()}>
+                <Button onClick={(e) => handleHidePassword(e)}>
                     <Icon icon="eye" />
                 </Button>
                 </div>
@@ -54,7 +46,7 @@ const SignIn = () => {
             </FormItem>
           )} />
 
-          <Button type="submit" className='w-full h-10 mt-4' aria-label='Create a new account'>
+          <Button type="submit" className='w-full h-10 mt-4' aria-label='Create a new account' disabled={pending}>
             Login In
           </Button>
         </form>

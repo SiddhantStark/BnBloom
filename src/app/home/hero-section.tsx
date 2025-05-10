@@ -6,7 +6,7 @@ const HeroSection = () => {
       <img
         className="absolute size-full z-[1] max-w-[1440px] mx-auto object-cover inset-0"
         src="./assets/hero-image-1440.jpeg"
-        alt="Booking.com Hero Image"
+        alt="BnBloom.com Hero Image"
       />
       <div className="z-[2] relative container space-2">
         <h1 className="mt-6 text-4xl font-extrabold leading-tight text-white md:text-5xl">

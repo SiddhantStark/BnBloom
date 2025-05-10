@@ -10,7 +10,7 @@ const AuthLayout = ({ children, title, description }) => {
             <img
               width={30}
               height={30}
-              src={getAssetPath('bookingcom-icon-logo.svg')}
+              src={getAssetPath('bnbloomcom-icon-logo.svg')}
               alt="Logo"
             />
           </div>
