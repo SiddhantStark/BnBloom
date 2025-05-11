@@ -2,14 +2,14 @@ import Icon from '@/components/ui/icon';
 
 const HotelMetaDetails = ({ hotel, info }) => {
     console.log(hotel);
-    console.log(hotel.amenities);
+    console.log(hotel?.amenities);
   return (
     <>
       <section className="space-y-4">
         <div className="flex">
           <div className="flex-1 space-y-1">
-            <h1 className="text-2xl font-bold">{hotel.name}</h1>
-            <p className="text-muted-foreground">{`${hotel.contactInfo?.address}, ${hotel.city}`}</p>
+            <h1 className="text-2xl font-bold">{hotel?.name}</h1>
+            <p className="text-muted-foreground">{`${hotel?.contactInfo?.address}, ${hotel?.city}`}</p>
           </div>
           <div className="">
             <div className="flex gap-2 items-center justify-center bg-brand px-2 py-1 rounded-t-sm text-white">
@@ -40,7 +40,7 @@ const HotelMetaDetails = ({ hotel, info }) => {
       <section className="space-y-4 my-8">
         <h2 className="text-xl font-bold">Amenities</h2>
         <ul className="flex flex-wrap gap-2">
-          {hotel.amenities.map((item, index) => {
+          {hotel?.amenities?.map((item, index) => {
             return (
               <li key={index} className="flex gap-2 items-center min-w-[180px]">
                 <Icon icon="check" size="18" className="text-green-600" />
@@ -55,7 +55,7 @@ const HotelMetaDetails = ({ hotel, info }) => {
       <section className="space-y-4 my-8">
         <h2 className="text-xl font-bold">About this Property</h2>
         <p className="text-sm leading-relaxed tracking-wide text-muted-foreground">
-          {info.description}
+          {info?.description}
         </p>
       </section>
     </>

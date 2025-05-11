@@ -83,7 +83,7 @@ const HotelRoomPicker = ({ rooms }) => {
     <section className="space-y-4">
       <h2 className="text-xl font-bold">Choose your room</h2>
       <div className="space-y-4">
-        {rooms.map((room) => (
+        {rooms?.map((room) => (
           <Room {...room} key={room.id} />
         ))}
       </div>

@@ -4,9 +4,9 @@ import Icon from '@/components/ui/icon'
 import { Popover, PopoverContent } from '@/components/ui/popover'
 import { PopoverTrigger } from '@radix-ui/react-popover'
 import dayjs from 'dayjs'
-import React from 'react'
 
 const DateSelectInput = ({ form }) => {
+
   return (
     <Popover>
       <FormField
@@ -25,14 +25,14 @@ const DateSelectInput = ({ form }) => {
                     />
                     <div className="flex items-center flex-1 gap-2 px-2">
                       <p className="text-sm">
-                        {field?.value?.from
-                          ? dayjs(field.value.from).format('ddd D MMM')
+                        {field?.value?.from != "Invalid Date"
+                          ? dayjs(field?.value?.from)?.format('ddd D MMM')
                           : 'Check-in date'}
                       </p>
                       <span aria-hidden>-</span>
                       <p className="text-sm">
-                        {field?.value?.to
-                          ? dayjs(field.value.to).format('ddd D MMM')
+                        {field?.value?.to != "Invalid Date"
+                          ? dayjs(field?.value?.to)?.format('ddd D MMM')
                           : 'Check-out date'}
                       </p>
                     </div>

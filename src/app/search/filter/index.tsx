@@ -7,7 +7,7 @@ import useFilterForm from './hooks/use-filter-form';
 
 const Filter = () => {
 
-  const {form} = useFilterForm();
+  const {form, clearAllFilters, filterChangeHandler} = useFilterForm();
 
   return (
     <aside className="border border-border max-h-max rounded-md w-[260px]">
@@ -17,13 +17,14 @@ const Filter = () => {
           variant="link"
           size="sm"
           className="h-auto p-0 text-xs underline-offset-1"
+          onClick={clearAllFilters}
         >
           Clear All
         </Button>
       </div>
 
       <Form {...form}>
-        <form>
+        <form onChange={filterChangeHandler}>
           <StarFilter form={form} />
           <PriceFilter form={form} />
         </form>

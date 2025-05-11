@@ -14,7 +14,7 @@ const PropertyViewCard = ({images}) => {
         >
             <CarouselContent className='-ml-0.5'>
                 {
-                    images.map((image, index) => {
+                    images?.map((image, index) => {
                         return (
                             <CarouselItem key={index} className='lg:basis-1/2'> 
                             <img className='h-96 w-full object-cover' src={image} alt={`Image index: ${index}`} />

@@ -7,6 +7,7 @@ import { PATHS } from '@/config/path.config'
 import SearchPage from './search'
 import HotelDetails from './hotel-details'
 import { SignInPage, SignUpPage } from './auth'
+import WithSearchLayout from '@/components/layout/with-search-layout'
 
 
 const Router = () => {
@@ -15,8 +16,11 @@ const Router = () => {
      <Header/>
         <Routes>
             <Route path="/" element={<Home />} /> 
-            <Route path={PATHS.SEARCH} element={<SearchPage />}/>
-            <Route path={PATHS.HOTEL} element={<HotelDetails />}/>
+
+            <Route element={<WithSearchLayout />}>
+              <Route path={PATHS.SEARCH} element={<SearchPage />}/>
+              <Route path={PATHS.HOTEL} element={<HotelDetails />}/>
+            </Route>
             <Route path={PATHS.SIGN_IN} element={<SignInPage />}/>
             <Route path={PATHS.SIGN_UP} element={<SignUpPage />}/>
         </Routes>

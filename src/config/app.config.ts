@@ -136,10 +136,10 @@ export const DESTINATIONS = [
 
 
 export const SEARCH_PARAMS_KEYS = {
-  CHECKIN: 'checkin',
-  CHECKOUT: 'checkout',
-  ROOMS: 'rooms',
-  LOCATION: 'location',
+  CHECKIN: 'startDate',
+  CHECKOUT: 'endDate',
+  ROOMS: 'roomsCount',
+  LOCATION: 'city',
   SELECTED_ROOM: 'selected_rcid',
   SORTBY: 'sort',
   PAGE: 'page',
@@ -147,6 +147,8 @@ export const SEARCH_PARAMS_KEYS = {
   PRICE_RANGE: 'price-range',
   NEXT_REDIRECT: 'next',
 };
+
+export const SEARCH_RESULT_PAGE_LIMIT = 2;
 
 export const SEARCH_FILTER_LABEL_KEY = {
   popularity: 'Our top picks',

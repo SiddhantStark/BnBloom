@@ -3,6 +3,7 @@ import { SERVICE_LIST } from '@/config/app.config';
 import Icon from '../ui/icon';
 import { Link } from 'react-router';
 import { useAuthContext } from '@/lib/providers/auth-context-provider';
+import AccountMenu from '../account-menu';
 
 const Header = () => {
 
@@ -25,7 +26,7 @@ const Header = () => {
 
         <div id="auth" className="flex gap-2 justify-center items-center">
           {authenticatedUser.user ? (
-            <p>Hi {authenticatedUser.user.name}</p>
+            <AccountMenu user={authenticatedUser.user}/>
           ) : (
             <>
               <Button

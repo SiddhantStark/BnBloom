@@ -8,6 +8,9 @@ export default function useQuery({ url, options = {} }) {
     error: null,
   });
 
+  console.log('queryState', queryState);
+  console.log('url', url);
+
   async function fetchData() {
     setQueryState({
       data: null,
@@ -34,11 +37,13 @@ export default function useQuery({ url, options = {} }) {
         isLoading: false,
       }));
     }
+
+    console.log('queryState', queryState);
   }
 
   useEffect(() => {
     fetchData();
-  }, [url]);
+  }, [url, JSON.stringify(options)]);
 
-  return { ...queryState };
+  return { refetchQuery: fetchData, ...queryState };
 }
