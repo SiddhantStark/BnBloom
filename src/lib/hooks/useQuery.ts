@@ -4,7 +4,7 @@ import axiosInstance from '../axios-instance';
 export default function useQuery({ url, options = {} }) {
   const [queryState, setQueryState] = useState({
     data: null,
-    isLoading: false,
+    pending: false,
     error: null,
   });
 
@@ -14,17 +14,16 @@ export default function useQuery({ url, options = {} }) {
   async function fetchData() {
     setQueryState({
       data: null,
-      isLoading: true,
+      pending: true,
       error: null,
     });
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
       const response = await axiosInstance(url, options);
       setQueryState({
-        data: response.data,
-        isLoading: false,
-        error: null,
+          data: response.data,
+          pending: false,
+          error: null,
       });
     } catch (e) {
       setQueryState((prev) => ({
@@ -34,11 +33,11 @@ export default function useQuery({ url, options = {} }) {
     } finally {
       setQueryState((prev) => ({
         ...prev,
-        isLoading: false,
+        pending: false,
       }));
     }
 
-    console.log('queryState', queryState);
+    console.log('queryState2', queryState);
   }
 
   useEffect(() => {

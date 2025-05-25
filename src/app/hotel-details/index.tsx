@@ -10,7 +10,7 @@ const HotelDetails = () => {
 
   const {data: hotelData, pending, error} = useGetHotelInfo();
   const hotelInfo = HOTEL_INFO;
-  console.log(hotelData);
+  console.log("hotel data", hotelData);
 
   if (pending) return <div className="container mt-6 mb-12">Loading...</div>;
 

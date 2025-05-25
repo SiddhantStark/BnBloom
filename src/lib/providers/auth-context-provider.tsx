@@ -1,31 +1,48 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import useQuery from "../hooks/useQuery";
 import API_CONFIG from "@/config/api.config";
+import { getEncodedRedirectUrl } from "../utils";
+import { Navigate, Outlet, useLocation } from "react-router";
+import { AUTH_TOKEN_KEY, getStorageItem } from "../storage-manager";
 
 const AuthContext = createContext({
   isAuthenticated: false,
   setIsAuthenticated: () => {}
 })
 
+const WithAuthProvider = () => {
+  const location = useLocation();
+  const { authenticatedUser } = useAuthContext();
+  if(!authenticatedUser.isAuthenticated){
+    const redirectUrl = `${location.pathname}${location.search}`;
+    console.log("Redirecting to sign-in page", redirectUrl);
+    return <Navigate to={`/signin?${getEncodedRedirectUrl(redirectUrl)}`} replace />
+  }
+
+  return <Outlet />;
+}
+
 const AuthContextProvider = ({children}) => {
 
   const [authenticatedUser, setAuthenticatedUser] = useState({
     user: null,
-    isAuthenticated: false,
+    isAuthenticated: getStorageItem(AUTH_TOKEN_KEY) ? true : false,
   });
 
-  const { data, isLoading, refetchQuery } = useQuery({
+  const { data, pending, refetchQuery } = useQuery({
     url: API_CONFIG.USER.PROFILE,
   });
 
   useEffect(() => {
-    setAuthenticatedUser({
-      isAuthenticated: true,
-      user: data
-    })
+    if(data){
+      setAuthenticatedUser({
+        isAuthenticated: true,
+        user: data
+      })
+    }
   }, [data]);
 
-  if(isLoading) return <p>Loading....</p>;
+  if(pending) return <p>Loading....</p>;
 
   return (
     <AuthContext value={{
@@ -48,5 +65,5 @@ const useAuthContext = () => {
   return context;
 }
 
-export {useAuthContext}
+export {useAuthContext, WithAuthProvider}
 export default AuthContextProvider;

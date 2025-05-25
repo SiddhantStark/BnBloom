@@ -1,15 +1,14 @@
-import React from 'react';
 import Filter from './filter';
 import SortFilter from './filter/components/sort-filter';
 import Hotels from './hotels';
 import PaginationFilter from './filter/components/pagination-filter';
-import useQuery from '@/lib/hooks/useQuery';
-import API_CONFIG from '@/config/api.config';
 import useGetHotels from './hotels/hooks/useGetHotels';
+import { SEARCH_RESULT_PAGE_LIMIT } from '@/config/app.config';
 
 const SearchPage = () => {
   const { data, pending, city, error } = useGetHotels();
   const hotels = data?.content || [];
+  const totalEntries = data?.totalElements;
 //   console.log('hotels', hotels);
 
   return (
@@ -21,7 +20,7 @@ const SearchPage = () => {
           <SortFilter />
         </div>
         <Hotels error={error} isLoading={pending} data={hotels} />
-        {hotels.length > 0 && <PaginationFilter />}
+        {hotels.length > 0 && <PaginationFilter totalEntries={totalEntries} limit={SEARCH_RESULT_PAGE_LIMIT} className={undefined} />}
       </section>
     </div>
   );

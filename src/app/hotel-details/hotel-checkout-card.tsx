@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import Icon from '@/components/ui/icon';
+import useGetSelectedRoomDetails from './hooks/useSelectedRooms';
+import CheckoutSummary from './checkout-summary';
 
 const CancellationPolicy = ({cancellationPolicy}) => {
   return (
@@ -24,36 +26,15 @@ const CancellationPolicy = ({cancellationPolicy}) => {
 }
 
 const HotelCheckoutCard = ({ rooms, cancellationPolicy }) => {
-  const selectedRoom = rooms?.find((item) => item?.isSelected);
-
+  const selectedRoomDetails = useGetSelectedRoomDetails(rooms);
   return (
     <div className="space-y-6">
       <div className="flex-1 flex gap-2 items-center">
-        <span className="text-2xl font-bold">{`₹${selectedRoom?.price?.toLocaleString()}`}</span>
-        <span className="text-base text-muted-foreground line-through">{`₹${(
-          selectedRoom?.price * 1.5
-        ).toLocaleString()}`}</span>
+        <span className="text-2xl font-bold">{`₹${selectedRoomDetails.totalPrice?.toLocaleString()}`}</span>
+        <span className="text-base text-muted-foreground line-through">{`₹${(selectedRoomDetails.displayPrice * 1.5).toLocaleString()}`}</span>
       </div>
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <span className="text-sm">Your savings</span>
-          <span className="text-sm font-bold">{`₹${
-            selectedRoom?.price * (0.5).toLocaleString()
-          }`}</span>
-        </div>
-
-        <div className="flex items-center justify-between">
-          <span className="text-sm">Total Price</span>
-          <span className="text-sm font-bold">{`₹${selectedRoom?.price.toLocaleString()}`}</span>
-        </div>
-      </div>
-
-      <Button
-        className="w-full h-12 text-base font-semibold"
-        aria-label="Continue to Book"
-      >
-        Continue to Book
-      </Button>
+      
+      <CheckoutSummary selectedRoomDetails={selectedRoomDetails} />
 
       <div className="flex gap-1">
         <Icon
