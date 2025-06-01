@@ -21,9 +21,8 @@ import Icon from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
 import InputDOB from '@/components/ui/input-dob';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { travel}
+import { travellerSchema } from '@/lib/validators/traveller-validator';
 import { zodResolver } from '@hookform/resolvers/zod';
-import React from 'react';
 import { useForm } from 'react-hook-form';
 
 const AddUpdateTravellerForm = ({

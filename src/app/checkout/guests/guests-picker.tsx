@@ -4,7 +4,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import API_CONFIG from '@/config/api.config';
 import useMutation from '@/lib/hooks/useMutation';
-import { useTravelerContext } from '@/lib/providers/travellers-context';
+import { useTravellerContext } from '@/lib/providers/travellers-context';
 import { AlertDialogCancel } from '@radix-ui/react-alert-dialog';
 import { useForm } from 'react-hook-form';
 import { toast } from 'sonner';
@@ -15,7 +15,7 @@ const GuestPicker = ({
   setBookingGuests,
   bookingGuests,
 }) => {
-  const { travelers } = useTravelerContext();
+  const { travellers } = useTravellerContext();
 
   const form = useForm({
     defaultValues: {
@@ -53,7 +53,7 @@ const GuestPicker = ({
           name="guests"
           render={() => (
             <FormItem>
-              {travelers.map((traveller) => (
+              {travellers.map((traveller) => (
                 <FormField
                   key={traveller.id}
                   control={form.control}
