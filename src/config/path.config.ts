@@ -6,7 +6,8 @@ const PATHS = {
     SEARCH: 'SEARCH',
     PROFILE: '/me/profile',
     BOOKING_HISTORY: '/me/booking-history',
-    CHECKOUT: 'hotels/:id/checkout'
+    CHECKOUT: 'hotels/:id/checkout',
+    PAYMENT_STATUS: 'hotels/:bookingId/status',
 }
   
 export {PATHS};

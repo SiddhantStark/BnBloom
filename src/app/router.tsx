@@ -10,6 +10,7 @@ import { SignInPage, SignUpPage } from './auth'
 import WithSearchLayout from '@/components/layout/with-search-layout'
 import CheckoutPage from './checkout'
 import { WithAuthProvider } from '@/lib/providers/auth-context-provider'
+import PaymentStatus from './payments'
 
 
 const Router = () => {
@@ -28,6 +29,7 @@ const Router = () => {
 
             <Route element={<WithAuthProvider/>}>
             <Route path={PATHS.CHECKOUT} element={<CheckoutPage />} />
+            <Route path={PATHS.PAYMENT_STATUS} element={<PaymentStatus/>} />
             </Route>
         </Routes>
       <Footer/>
