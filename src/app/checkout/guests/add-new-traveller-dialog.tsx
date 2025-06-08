@@ -6,12 +6,13 @@ import Icon from '@/components/ui/icon';
 
 const AddNewTraveler = () => {
   const [isAddGuestDialogOpen, setIsAddGuestDialogOpen] = useState(false);
-  const { data, pending, addGuest } = useAddTraveller(isAddGuestDialogOpen);
+  const { data, pending, addGuest } = useAddTraveller({ setIsAddGuestDialogOpen });
 
   return (
     <AddOrUpdateTravellerDialog
       mutate={addGuest}
       title={'Add New Traveler'}
+      description={'Please provide the details of the new traveler.'}
       isDialogOpen={isAddGuestDialogOpen}
       setIsDialogOpen={setIsAddGuestDialogOpen}
       isDisabled={pending}

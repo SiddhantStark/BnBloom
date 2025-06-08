@@ -4,6 +4,7 @@ import API_CONFIG from "@/config/api.config";
 import { getEncodedRedirectUrl } from "../utils";
 import { Navigate, Outlet, useLocation } from "react-router";
 import { AUTH_TOKEN_KEY, getStorageItem } from "../storage-manager";
+import { PATHS } from "@/config/path.config";
 
 const AuthContext = createContext({
   isAuthenticated: false,
@@ -15,8 +16,8 @@ const WithAuthProvider = () => {
   const { authenticatedUser } = useAuthContext();
   if(!authenticatedUser.isAuthenticated){
     const redirectUrl = `${location.pathname}${location.search}`;
-    console.log("Redirecting to sign-in page", redirectUrl);
-    return <Navigate to={`/signin?${getEncodedRedirectUrl(redirectUrl)}`} replace />
+    // console.log("Redirecting to sign-in page", redirectUrl);
+    return <Navigate to={`${PATHS.SIGN_IN}?${getEncodedRedirectUrl(redirectUrl)}`} replace />
   }
 
   return <Outlet />;

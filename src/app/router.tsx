@@ -11,6 +11,10 @@ import WithSearchLayout from '@/components/layout/with-search-layout'
 import CheckoutPage from './checkout'
 import { WithAuthProvider } from '@/lib/providers/auth-context-provider'
 import PaymentStatus from './payments'
+import SettingLayout from './settings/setting-layout'
+import Profile from './settings/profile'
+import TravellersManagement from './settings/travellers'
+import BookingHistory from './settings/booking-history'
 
 
 const Router = () => {
@@ -31,6 +35,18 @@ const Router = () => {
             <Route path={PATHS.CHECKOUT} element={<CheckoutPage />} />
             <Route path={PATHS.PAYMENT_STATUS} element={<PaymentStatus/>} />
             </Route>
+
+            <Route element={<WithAuthProvider/>}>
+            <Route path={PATHS.CHECKOUT} element={<CheckoutPage />} />
+            <Route path={PATHS.PAYMENT_STATUS} element={<PaymentStatus/>} />
+            </Route>
+
+            <Route element={<SettingLayout/>}>
+            <Route path={PATHS.SETTINGS.PROFILE} element={<Profile />} />
+            <Route path={PATHS.SETTINGS.BOOKING_HISTORY} element={<BookingHistory/>} />
+            <Route path={PATHS.SETTINGS.TRAVELERS_MANAGEMENT} element={<TravellersManagement/>} />
+            </Route>
+
         </Routes>
       <Footer/>
     </BrowserRouter>
