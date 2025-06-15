@@ -5,7 +5,7 @@ import { Link } from 'react-router';
 import { useAuthContext } from '@/lib/providers/auth-context-provider';
 import AccountMenu from '../account-menu';
 
-const Header = () => {
+const Header = ({showServiceList}) => {
 
   const {authenticatedUser}= useAuthContext();
   const isAuthenticated = authenticatedUser?.isAuthenticated;
@@ -45,7 +45,9 @@ const Header = () => {
           )}
         </div>
       </div>
-      <div className="container flex gap-1 overflow-x-auto scrollbar">
+      {
+        showServiceList &&
+        <div className="container flex gap-1 overflow-x-auto scrollbar">
         {SERVICE_LIST.map((item) => (
           <Button
             key={item.id}
@@ -59,6 +61,7 @@ const Header = () => {
           </Button>
         ))}
       </div>
+      }
     </header>
   );
 };
