@@ -1,17 +1,49 @@
-import React from 'react'
+import React, { createContext } from 'react';
+import { isAdmin } from '../utils';
 import { useAuthContext } from './auth-context-provider';
-import { Navigate, Outlet } from 'react-router';
+import { Navigate, Outlet, useParams } from 'react-router';
+import useQuery from '../hooks/useQuery';
+
+const AdminContext = createContext({
+  hotel: null,
+  isLoading: false,
+  error: null,
+});
 
 const WithAdminProvider = () => {
+  const { authenticatedUser } = useAuthContext();
+  const isAdmin2 = isAdmin(authenticatedUser.user);
 
-    const {authenticatedUser} = useAuthContext();
-    console.log("Authenticated User in Admin Provider: ", authenticatedUser?.user);
-    const isAdmin = authenticatedUser?.user?.roles?.includes('HOTEL_MANAGER') || true;
+//   console.log('admin provider', authenticatedUser.user);
 
-    if(!isAdmin) {
-        return <Navigate to="/" />
-    }
-    return <Outlet />;
+  if (!isAdmin2) return <Navigate to={'/'} />;
+
+  return <Outlet />;
+};
+
+const AdminContextProvider = ({ children }) => {
+  const { hotelId } = useParams();
+  const { data, pending, error } = useQuery({
+    url: `/admin/hotels/${hotelId}`,
+  });
+
+  const contextValue = {
+    hotel: data,
+    isLoading: pending,
+    error,
+  };
+
+  return <AdminContext value={contextValue}>{children}</AdminContext>;
+};
+
+function useAdminContext() {
+  const context = React.useContext(AdminContext);
+  if (!context) {
+    throw new Error(
+      'useAdminContext must be used within a AdminContextProvider'
+    );
+  }
+  return context;
 }
 
-export default WithAdminProvider;
+export { WithAdminProvider, AdminContextProvider, useAdminContext };

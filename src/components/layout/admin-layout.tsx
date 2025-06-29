@@ -3,9 +3,11 @@ import { Outlet } from 'react-router'
 import { SidebarProvider } from '../ui/sidebar';
 import { AdminHeader } from './admin-header.layout';
 import AdminSidebar from './admin-sidebar.layout';
+import { AdminContextProvider } from '@/lib/providers/admin-context-provider';
 
 const AdminLayout = () => {
   return (
+    <AdminContextProvider>
     <div className="flex items-center justify-start min-h-screen">
       <SidebarProvider
         style={{
@@ -21,6 +23,7 @@ const AdminLayout = () => {
         </div>
       </SidebarProvider>
     </div>
+    </AdminContextProvider>
   );
 }
 

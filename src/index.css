@@ -91,6 +91,8 @@
   --color-sidebar-primary: var(--sidebar-primary);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar: var(--sidebar);
+
+  --animate-loading-bar: loading-bar 1.25s cubic-bezier(0.65, 0.81, 0.73, 0.4)
 }
 
 * {

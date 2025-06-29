@@ -11,6 +11,7 @@ function useMutation(url, method) {
   const mutate = async (payload, cb) => {
     setMutateState({ data: null, pending: true, error: null });
     try {
+      await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulate a delay
       const response = await axiosInstance({
         method: method,
         url: url,
