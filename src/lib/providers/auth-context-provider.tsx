@@ -4,6 +4,7 @@ import { getEncodedRedirectUrl } from "../utils";
 import { Navigate, Outlet, useLocation } from "react-router";
 import { PATHS } from "@/config/path.config";
 import React from "react";
+import { LoadingSpinner } from "@/components/ui/loader";
 
 const AuthContext = React.createContext({
   isAuthenticated: false,
@@ -15,7 +16,7 @@ const WithAuthProvider = () => {
   const { authenticatedUser, authChecked } = useAuthContext();
 
   if (!authChecked) {
-    return <p>Loading...</p>;
+    return <LoadingSpinner containerClassName="min-h-[calc(100vh)-200px]" className={undefined} />;;
   }
 
   if (!authenticatedUser.isAuthenticated) {

@@ -245,8 +245,12 @@ export const bookingStatusVariant = {
     className: 'border-red-600 bg-red-100 text-red-600',
     text: 'Cancelled',
   },
-  PAYMENTS_PENDING: {
+  PAYMENT_PENDING: {
     className: 'border-amber-600 bg-amber-100 text-amber-600',
     text: 'Pending',
+  },
+  GUEST_ADDED: {
+    className: 'border-pink-600 bg-pink-100 text-pink-600',
+    text: 'Guest Added',
   }
 };

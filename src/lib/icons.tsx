@@ -1,4 +1,4 @@
-import { Bed, CalendarClock, CalendarDays, CarFront, CarTaxiFront, Check, ChevronDown, CircleCheck, DoorOpen, Dot, EllipsisVertical, Eye, FerrisWheel, Gem, Heart, Hotel, ImagePlus, Info, LayoutGrid, LogOutIcon, MapPin, Minus, MoveRight, Pen, Plane, Plus, Save, ShieldCheck, Star, User2, Users, X, Zap } from "lucide-react";
+import { ArrowLeft, Bed, CalendarClock, CalendarDays, CarFront, CarTaxiFront, Check, ChevronDown, ChevronLeft, CircleCheck, DoorOpen, Dot, EllipsisVertical, Eye, FerrisWheel, Gem, Heart, Hotel, ImagePlus, Info, LayoutGrid, Loader2, LogOutIcon, MapPin, Minus, MoveRight, Pen, Plane, Plus, Save, ShieldCheck, Star, User2, Users, X, Zap } from "lucide-react";
 
 export default {
   bed: Bed,
@@ -96,5 +96,7 @@ export default {
   rightArrow: MoveRight,
   dashboard: LayoutGrid,
   hotel: Hotel,
-  addImage: ImagePlus
+  addImage: ImagePlus,
+  spinner: Loader2,
+  leftArrow: ChevronLeft
 };

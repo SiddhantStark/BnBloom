@@ -3,6 +3,7 @@ import { isAdmin } from '../utils';
 import { useAuthContext } from './auth-context-provider';
 import { Navigate, Outlet, useParams } from 'react-router';
 import useQuery from '../hooks/useQuery';
+import { AppLoader } from '@/components/ui/loader';
 
 const AdminContext = createContext({
   hotel: null,
@@ -32,6 +33,10 @@ const AdminContextProvider = ({ children }) => {
     isLoading: pending,
     error,
   };
+
+  if( pending ) {
+    return <AppLoader />;
+  }
 
   return <AdminContext value={contextValue}>{children}</AdminContext>;
 };

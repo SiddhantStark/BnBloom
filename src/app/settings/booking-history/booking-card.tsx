@@ -83,7 +83,7 @@ const BookingCard = ({
   bookingId: string;
   id: string;
 }) => {
-  console.log('Booking status', bookingStatus);
+  // console.log('Booking status', bookingStatus);
   // const isBookingConfirmed = bookingStatus === 'CONFIRMED';
   return (
     <article className="border rounded-lg">

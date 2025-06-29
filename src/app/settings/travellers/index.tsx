@@ -1,13 +1,15 @@
 import { Separator } from '@/components/ui/separator';
-import React from 'react';
 import CoTravellerInfo from './travellers-card';
 import AddNewTraveler from '@/app/checkout/guests/add-new-traveller-dialog';
 import { useTravellerContext } from '@/lib/providers/travellers-context';
+import { LoadingSpinner } from '@/components/ui/loader';
 
 const TravelersManagement = () => {
   const { travellers, pending } = useTravellerContext();
 
-  if (pending) return <p>Loading...</p>;
+  if(pending) {
+    return <LoadingSpinner containerClassName="min-h-[calc(100vh)-200px]" className={undefined} />;
+  }
 
   return (
     <section>
