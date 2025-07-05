@@ -141,7 +141,7 @@ const AdminHotelRoomCard = ({
     <article className="flex items-center justify-between p-4 border rounded-md">
       <div className="flex gap-4">
         <img
-          src={photos[0]}
+          src={photos?.[0] || null}
           alt={type}
           width={150}
           height={100}
@@ -154,7 +154,7 @@ const AdminHotelRoomCard = ({
             role="list"
             aria-label="Hotel amenities list"
           >
-            {amenities.slice(0, 5).map((amenity, index) => (
+            {amenities?.slice(0, 5).map((amenity, index) => (
               <li
                 key={index}
                 className="flex items-center gap-2"
@@ -174,7 +174,7 @@ const AdminHotelRoomCard = ({
                 </p>
               </li>
             ))}
-            {amenities.length > 5 && (
+            {amenities?.length > 5 && (
               <li className="flex items-center gap-2" role="listitem">
                 <Icon
                   icon="check"

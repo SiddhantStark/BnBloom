@@ -252,5 +252,9 @@ export const bookingStatusVariant = {
   GUEST_ADDED: {
     className: 'border-pink-600 bg-pink-100 text-pink-600',
     text: 'Guest Added',
+  },
+  CONFIRMED: {
+    className: 'border-blue-600 bg-blue-100 text-blue-600',
+    text: 'Confirmed',
   }
 };

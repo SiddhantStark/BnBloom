@@ -1,12 +1,15 @@
-import { Calendar } from '@/components/ui/calendar'
-import { FormControl, FormField, FormItem } from '@/components/ui/form'
-import Icon from '@/components/ui/icon'
-import { Popover, PopoverContent } from '@/components/ui/popover'
-import { PopoverTrigger } from '@radix-ui/react-popover'
-import dayjs from 'dayjs'
+import { Calendar } from '@/components/ui/calendar';
+import { FormControl, FormField, FormItem } from '@/components/ui/form';
+import Icon from '@/components/ui/icon';
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from '@/components/ui/popover';
+import { cn } from '@/lib/utils';
+import dayjs from 'dayjs';
 
-const DateSelectInput = ({ form }) => {
-
+const DateSelectInput = ({ form, className }) => {
   return (
     <Popover>
       <FormField
@@ -15,7 +18,12 @@ const DateSelectInput = ({ form }) => {
         render={({ field }) => (
           <>
             <PopoverTrigger asChild>
-              <FormItem className="px-4 py-2 rounded bg-background h-full lg:min-w-[300px] lg:flex-auto">
+              <FormItem
+                className={cn(
+                  'px-4 py-2 rounded bg-background h-full lg:min-w-[300px] lg:flex-auto',
+                  className
+                )}
+              >
                 <FormControl>
                   <div role="button" className="flex items-center h-full">
                     <Icon
@@ -25,14 +33,14 @@ const DateSelectInput = ({ form }) => {
                     />
                     <div className="flex items-center flex-1 gap-2 px-2">
                       <p className="text-sm">
-                        {field?.value?.from != "Invalid Date"
-                          ? dayjs(field?.value?.from)?.format('ddd D MMM')
+                        {field?.value?.from
+                          ? dayjs(field.value.from).format('ddd D MMM')
                           : 'Check-in date'}
                       </p>
                       <span aria-hidden>-</span>
                       <p className="text-sm">
-                        {field?.value?.to != "Invalid Date"
-                          ? dayjs(field?.value?.to)?.format('ddd D MMM')
+                        {field?.value?.to
+                          ? dayjs(field.value.to).format('ddd D MMM')
                           : 'Check-out date'}
                       </p>
                     </div>
@@ -41,7 +49,7 @@ const DateSelectInput = ({ form }) => {
               </FormItem>
             </PopoverTrigger>
             <PopoverContent
-              sideOffset={1}
+              sideOffset="1"
               align="start"
               className="w-[640px]"
               onOpenAutoFocus={(e) => e.preventDefault()}
@@ -66,4 +74,4 @@ const DateSelectInput = ({ form }) => {
   );
 };
 
-export default DateSelectInput
+export default DateSelectInput;
